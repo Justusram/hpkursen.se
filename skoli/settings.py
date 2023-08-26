@@ -163,6 +163,7 @@ CSRF_COOKIE_SAMESITE = 'Strict'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://hpcoachen.azurewebsites.net',
+    'https://hpkursen.se',
     # Add other trusted origins if needed
 ]
 
