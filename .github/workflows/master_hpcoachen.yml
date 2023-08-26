@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'hpcoachen'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B909194F00FE43148B731E7A44CC1D28 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_49B2BF817F704E73A132D640611FDF79 }}
