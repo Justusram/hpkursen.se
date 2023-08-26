@@ -1,0 +1,253 @@
+{% extends 'main.html' %}
+
+
+{% load static %}
+
+{% block content %}
+
+
+
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Högskoleprovets bästa resultat</h1>
+      <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">Vi ger dig ett nytt, digitalt, interaktivt och effektivt sätt att plugga inför högskoleprovet. Givetvis helt kostnadsfritt.</p>
+      <div class="flex space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4" style="justify-content: center; align-items:center;">
+        {% if not request.user.is_authenticated %} 
+        <a href="{% url 'register-page' %}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-400 to-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900" style="width: 135px; height:50px; margin:0; margin-right:4px;">
+          Börja idag
+          <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          </svg>
+      </a>
+      {% endif %}
+      <a id="scrollButton" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-base rounded-lg border border-base hover:bg-gray-500 hover:text-white focus:ring-4 focus:ring-gray-400" style="width: 135px; height: 50px; margin: 0; margin-left: 4px; border-width: 2px;">
+        Läs mer
+        </a> 
+      </div>
+      <br>
+      <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+        <div class="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-white dark:bg-gray-800">
+            <img src="https://hpcoachenstatic.blob.core.windows.net/staticfiles/images/quiz-img.png" class="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt="">
+            <img src="https://hpcoachenstatic.blob.core.windows.net/staticfiles/images/quiz-img.png" class="hidden dark:block h-[156px] md:h-[278px] w-full rounded-lg" alt="">
+        </div>
+      </div>
+      <div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">
+        <div class="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl w-[56px] h-[5px] md:w-[96px] md:h-[8px] bg-gray-800"></div>
+      </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- Hero/landing section -->
+<!-- 
+<section class="bg-gray-900 dark:bg-gray-900" style="min-height:90%; display:flex; align-items:center">
+  <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <div class="mr-auto place-self-center lg:col-span-7">
+          <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white text-white">Plattformen för Högskoleprovets  resultat</h1>
+          <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Ett nytt, digitalt, interaktivt och effektivt sätt att plugga inför högskoleprovet. Givetvis helt kostnadsfritt.</p>
+        {% if not request.user.is_authenticated %} 
+          <a href="{% url 'register-page' %}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-400 to-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            Börja idag
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+        {% endif %}
+        <a id="scrollButton" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+            Läs mer
+        </a>  
+      </div>
+
+
+      <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+
+
+        <div class="relative mx-auto border-gray-800 border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+          <div class="rounded-xl overflow-hidden h-[140px] md:h-[262px]">
+              <img src="https://hpcoachenstatic.blob.core.windows.net/staticfiles/images/quiz-img.png" class="hidden dark:hidden h-[140px] md:h-[262px] w-full rounded-xl" alt="">
+              <img src="https://hpcoachenstatic.blob.core.windows.net/staticfiles/images/quiz-img.png" class="block dark:block h-[140px] md:h-[262px] w-full rounded-xl" alt="">
+          </div>
+      </div>
+      <div class="relative mx-auto bg-gray-700 dark:bg-gray-700 rounded-b-xl h-[24px] max-w-[301px] md:h-[42px] md:max-w-[512px]"></div>
+      <div class="relative mx-auto bg-gray-600 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]"></div>
+      
+      </div>
+ 
+  </div>
+</section> -->
+
+
+
+
+
+<!-- slogan -->
+<span id="scrollTarget" class="scroll-target"></span>
+
+<section class="bg-gray-100 dark:bg-gray-900" >
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">9 av 10 användare får bättre resultat på Högskoleprovet med oss</h2>
+          <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Med hjälp av våra två främsta funktioner. Övningsläget och provläget.</p>
+      </div>
+      <div style="display: flex; justify-content:center;">
+
+      <div class=" lg:grid lg:grid-cols-2 sm:gap-6 xl:gap-10 lg:space-y-0" >
+        
+          <!-- Pricing Card -->
+                  
+        <div class="max-w-sm p-6 bg-white border border-gray-100 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " style="margin-bottom: 15px;">
+            <a href="{% url 'övningar-page' %}">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">Övningsläget</h5>
+            </a>
+            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Ett övningsläge som ger dig förklaringar till frågan, visar rätt svar om du vill, och ger dig feedback efter varje fråga. Här är syftet att lära sig hur man ska tänka och hur man löser uppgifter på högskoleprovet. I övningsläget har du även tillgång till en personlig AI som förklarar hur du ska tänka.</p>
+            <a href="{% url 'övningar-page' %}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-400 to-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+              Till övningsläget
+              <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+              </svg>
+            </a>
+            
+        </div>
+
+        <div class="max-w-sm p-6 bg-white border border-gray-100 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 " style="margin-bottom: 15px;">
+          <a href="{% url 'provbanken-page' %}">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Provläget</h5>
+          </a>
+          <p class="mb-6 font-light text-gray-400 md:text-lg dark:text-gray-400">En välutvecklad provsimulering som förbereder dig inför en provmiljö, som på provdagen. När alla frågor är gjorda för alla delprov, räknas dina poäng ut så att du vet hur du ligger till. Under tiden du svarar på frågorna i provläget har du inte tillgång till förklaringar så att upplevelsen blir så verklighetstrogen som möjligt.</p>
+          <a href="{% url 'provbanken-page' %}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-400 to-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            Till provläget
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+          </a>
+        </div>
+
+    </div>      
+  </div>
+
+</section>
+
+
+
+<!-- Personlig AI description sectioln -->
+
+<section class="bg-white dark:bg-gray-600">
+  <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+      <img class="w-full dark:hidden" src="{% static 'images/ai.jpg' %}" alt="dashboard image">
+      <img class="w-full hidden dark:block" src="{% static 'images/ai.jpg' %}" alt="dashboard image">
+      <div class="mt-4 md:mt-0">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Personlig AI som håller din hand genom alla övningar</h2>
+        <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">I övningsläget har du alltid tillgång till förklaringar som skapas live med ChatGPT. Vi ger dig anpassade förklaringar efter dina behov. Om du inte förstår får du en ny förklaring.</p>
+        <!-- <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gradient-to-br from-green-400 to-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+          Till Övningsläget
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a> -->
+
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Om HP -->
+
+<section class="bg-gray-100 dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+          <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Om Högskoleprovet</h2>
+          <p class="mb-4 font-light">Högskoleprovet utgör en unik möjlighet till att bli antagen till din önskade utbildning genom ett separat urvalsgrupp. Genom att korrekt förbereda dig kan du effektivt och snabbt uppnå önskat resultat, och därigenom öppna dörren till din drömutbildning.</p>
+      </div>
+
+
+    <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white ">Att skriva högskoleprovet</h2>
+        <p class="mb-4 font-light">Vanligtvis arrangeras Högskoleprovet två gånger per år, med ett prov under hösten och ett under våren. Det är öppet för alla som önskar delta. På grund av coronapandemin kommer det att hållas två vårprover per år under de kommande åren. Höstprovet genomförs på söndagar, medan vårens prov genomförs på lördagar. Att delta i Högskoleprovet tar upp en hel dag och kostar 550 kronor. Det är möjligt att skriva provet i de flesta större städer runt om i hela Sverige, samt på utvalda platser utomlands. Ansvaret för Högskoleprovet ligger hos Universitets- och högskolerådet (UHR), och den officiella webbplatsen för provet är Studera.nu. Det är högskolor och universitet som organiserar provet, och anmälan görs via Hogskoleprov.nu. Anmälningsperioden är relativt kort och brukar öppna två till tre månader innan provet genomförs. Umeå universitet är ansvarigt för konstruktionen av alla provdelar utom ELF-delen, som utformas av Göteborgs universitet på uppdrag av UHR.</p>
+    </div>
+
+    <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+      <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white ">Efter högskoleprovet</h2>
+      <p class="mb-4 font-light">Provfrågorna på högskoleprovet offentliggörs dagen efter det genomförda provet, medan facit för högskoleprovet tillsammans med våra detaljerade förklaringar till samtliga uppgifter presenteras två dagar senare. Det officiella resultatet från högskoleprovet förväntas vara tillgängligt ungefär fyra veckor efter provet ägt rum. Dina poäng på provet genomgår en normeringsprocess som omvandlar dem till en skala mellan 0.00 och 2.00. Det är detta normerade resultat som du använder när du ansöker till olika utbildningar och kurser.</p>
+  </div>
+
+  <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+    <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white ">Högskoleprovets delar</h2>
+    <p class="mb-4 font-bold" style="color: #7c7c7c;">Högskoleprovet inkluderar 160 frågor som är uppdelade i åtta delprov och två olika typer av pass. Den verbala delen av provet omfattar fyra av dessa delar:</p>
+    <p class="mb-4 font-medium">ORD - Ordförståelse </p>
+    <p class="mb-4 font-medium">LÄS - Svensk läsförståelse</p>
+    <p class="mb-4 font-medium">MEK - Meningskomplettering</p>
+    <p class="mb-4 font-medium">ELF - Engelsk läsförståelse</p>
+
+    <p class="mb-4 font-bold" style="color: #7c7c7c;">Det kvantitativa provpasset består av de fyra delarna:</p>
+    <p class="mb-4 font-medium">XYZ - Matematisk problemlösning</p>
+    <p class="mb-4 font-medium">KVA - Kvantitativa jämförelser</p>
+    <p class="mb-4 font-medium">NOG - Kvantitativa resonemang</p>
+    <p class="mb-4 font-medium">DTK - Diagram, Tabeller och Kartor</p>
+
+    <p class="mb-4 font-medium">Under högskoleprovet genomför du två verbala provpass och två kvantitativa provpass. Dessutom skriver du ett utforskande provpass som används för att utvärdera nya uppgifter till framtida högskoleprov. Det är dock viktigt att notera att poängen från detta utforskande provpass inte påverkar ditt slutliga högskoleprovsresultat. Våra övningar och prov är baserade på dessa delar och uppgifter dragna direkt från gamla högskoleprov. Du får alltså med dig alla dessa delar när du använder plattformen.</p>
+
+</div>
+
+    <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+      <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white text-white"></h2>
+      <p class="mb-4 font-light"></p>
+  </div>
+
+<div style="display: flex; justify-content:center;">
+    {% if not request.user.is_authenticated %}
+              
+  <a href="{% url 'register-page' %}">
+    <button type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" style="width: 230px; margin-top:20px; margin-bottom:45px; font-size:17px; padding:12px;">
+      Skapa konto gratis
+    </button>
+  </a>
+  <br>
+  {% endif %}
+</div>
+
+
+</div>
+</section>
+
+
+
+  
+
+
+
+
+
+
+
+<script>
+  // Get references to the button and target element
+  const scrollButton = document.getElementById('scrollButton');
+  const scrollTarget = document.getElementById('scrollTarget');
+
+  // Add a click event listener to the button
+  scrollButton.addEventListener('click', function (event) {
+      // Prevent the default behavior of the anchor link
+      event.preventDefault();
+
+      // Scroll to the target element
+      scrollTarget.scrollIntoView({
+          behavior: 'smooth' // You can use 'auto' for instant scrolling
+      });
+  });
+</script>
+
+
+</body>
+
+
+{% endblock content %}

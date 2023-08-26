@@ -1,0 +1,92 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+
+    body {
+        background-color: #ffffff;
+        height: 100%;
+      }
+      
+    body::before {
+    background-color: #ffffff;
+    
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column; /* Change to column layout */
+        align-items: center; /* Center align the items horizontally */
+        margin-top: 80px;
+        text-align: center; /* Center the text */
+
+    }
+
+
+    .mina-resultat,
+    .prov-sammanställning {
+        width: 80%;
+        padding: 20px;
+        margin: 10px;
+        background-color: #f8fcfc;
+        text-align: center; /* Center the text */
+
+    }
+
+    .mina-resultat:hover,
+    .prov-sammanställning:hover {
+        background-color: #ffffff;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3); /* Add box shadow */
+    }
+
+
+
+</style>
+
+    <h1>Mina resultat</h1>
+    <p style="font-size:22px; width:80%;">Bra Jobbat! Nu vet du hur man skriver ett högskoleprov! </p>
+
+    <div class="mina-resultat">
+        <img src="{% static 'images/result.png' %}" style="width: 120px; margin-bottom: 15px;">
+
+        <p style="font-size:22px;">Ditt Högskolepoäng: </p> 
+
+        <p style="font-size:30px; font-weight:bold;">{{poäng}}</p>
+
+
+        <p style="font-size:22px;">Totalt Antal Rätt:</p>
+        <p style="font-size:30px; font-weight:bold;">{{resultat}}</p>
+    </div>
+
+
+
+    <div class="prov-sammanställning">
+
+        <img src="{% static 'images/statistics.png' %}" style="width: 120px; margin-bottom: 15px;">
+
+        <p style="font-size:22px; ">Statistik från varje provpass:</p>
+
+        <p style="font-size:19px;">{{quiz_1.name.capitalize}}: Du fick <span style="font-weight: bold;">{{quiz_1_correct_count}} RÄTT</span> och <span style="font-weight: bold;">{{quiz_1_wrong_count}} FEL</span></p>
+
+        <p style="font-size:19px;">{{quiz_2.name.capitalize}}: Du fick <span style="font-weight: bold;">{{quiz_2_correct_count}} RÄTT</span> och <span style="font-weight: bold;">{{quiz_2_wrong_count}} FEL</span></p>
+
+        <p style="font-size:19px;">{{quiz_3.name.capitalize}}: Du fick <span style="font-weight: bold;">{{quiz_3_correct_count}} RÄTT</span> och <span style="font-weight: bold;">{{quiz_3_wrong_count}} FEL</span></p>
+        
+        <p style="font-size:19px;">{{quiz_4.name.capitalize}}: Du fick <span style="font-weight: bold;">{{quiz_4_correct_count}} RÄTT</span> och <span style="font-weight: bold;">{{quiz_4_wrong_count}} FEL</span></p>
+
+    </div>
+
+
+
+
+
+
+    
+
+
+
+{% endblock content %}

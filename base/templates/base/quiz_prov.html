@@ -1,0 +1,875 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+        styles: {".MathJax": {display: "flex"}}
+    });
+</script> -->
+
+<style>
+    .mathjax-preloader {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-color: white; /* Set to your page's background color */
+        position: fixed;
+        z-index: 9999;
+    }
+
+    .mathjax-content {
+        display: none;
+    }
+</style>
+
+<div class="mathjax-preloader"></div>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        CommonHTML: {
+            styles: {
+                ".mjx-math": {
+                    "font-family": "Arial, sans-serif",
+                    "font-size": "16px",
+                }
+            }
+        },
+        // Other MathJax configuration settings
+    });
+
+    MathJax.Hub.Queue(function() {
+        // Remove the preloader and show the content
+        var preloader = document.querySelector('.mathjax-preloader');
+        var content = document.querySelector('.mathjax-content');
+        
+        preloader.style.display = 'none';
+        content.style.display = 'block';
+    });
+</script>
+
+<div class="mathjax-content">
+    <!-- Your MathJax content here -->
+</div>
+
+<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+ 
+
+
+
+<style>
+
+    
+
+    body {
+        background-color: #ffffff;
+        height: 100%;
+      }
+      
+      body::before {
+        background-color: #ffffff;
+      
+      }
+      
+   .home-container {
+    display: flex; /* Use flexbox to make the elements appear next to each other */
+    padding-top: 150px;
+    justify-content: center;
+    padding-right: 10%;
+    padding-left: 10%;
+    } 
+
+    .home-container2 {
+        display: flex; /* Use flexbox to make the elements appear next to each other */
+        justify-content: center;
+        
+        } 
+
+
+      
+    /* == all allmän stil, knappar osv == */
+
+    /* Alla knappar stil */
+    .btn-original{
+        background-color: #4285f4; /* Set the background color */
+        border: none; /* Remove the border */
+        color: white; /* Set the text color */
+        padding: 10px 20px; /* Add some padding */
+        text-align: center; /* Center the text horizontally */
+        text-decoration: none; /* Remove underline from the text */
+        display: inline-block; /* Make the button a block element */
+        font-size: 16px; /* Set the font size */
+        cursor: pointer; /* Add a cursor pointer on hover */
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+
+    .styra-btn {
+        background-color: #636363;
+        color: #ffffff;
+        border-radius: 50px;
+        height: 50px;
+        width: 50px;
+        font-size: 20px;
+    }
+
+    .btn-original:hover{
+        background-color: #2c5696; /* Set the background color */
+
+    }
+
+    /* == Navigation styles: (Här nedan är allt enbart för navigations delen, ej quiz) == */
+
+    .navigation-wrap {
+        display: inline-block;
+        padding-right: 65px;
+        max-width: 500px;
+    }
+
+
+    .jump-question-wrapper {
+        display: flex;
+       
+        flex-direction: column;
+        border-radius: 12px;
+        width: 100%;
+        height: 400px;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        overflow: auto; /* Enable scrolling */
+    }
+    
+    .jump-question-wrapper p {
+        font-size: 16,5px;
+        font-weight: 600;
+        color: #626262;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 5px;
+        padding-bottom: 4px;
+        margin-top: 0px;
+        
+    }
+
+
+    .jump-question-wrapper-img {
+        image-rendering: auto;
+        margin-left: 10px;
+        width: 25px; 
+        height: 25px;
+
+        
+    }
+
+
+
+    .question-link {
+        display: inline-flex; /* Use display: flex; to create a flex container */
+        align-items: center; /* Vertically center the contents */
+        background-color: #f5f5f5;
+        border: #ffffff;
+        border-radius: 4px;
+        height: 40px;
+        margin-top: 15px;
+        padding-top: 10px;
+        cursor: pointer;
+        width: 98%;
+        
+      }
+
+    .question-link2 {
+        display: inline-flex; /* Use display: flex; to create a flex container */
+        align-items: center; /* Vertically center the contents */
+
+        background-color: #f5f5f5;
+        border: #ffffff;
+        padding: 10px;
+        height: 70px;
+    }
+    
+    .link-clicked {
+        background-color: #dfdfdf;
+    }
+
+
+    .navigation-wrap-mobile {
+        display: none;
+        padding-right: 65px;
+        max-width: 500px;
+    }
+
+
+    /* == Question styles: (Här nedan är allt enbart för quiz delen, ej navigation) == */
+
+    /* Nästa knapp och tillbaka knapp brevid varann */
+    .question_p {
+        max-width: 100%;
+        font-weight: 400;
+        font-size: 19px; /* Adjust the font size as needed */
+      }
+      
+
+    .nästa-tillbaka-brevidvarann-container form{
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+
+    /* Checkbox alternatives wrapping */
+    .quiz-alternative-button {
+        display: inline-block;
+        background-color: #f5f5f5;
+        /* border: 1px solid #ccc; */
+        border-radius: 4px;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+      }
+      
+      .quiz-alternative-button:hover {
+        background-color: #ebebeb;
+      }
+      
+      
+      .alternative-text {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+
+      .button-form {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+
+    @media (max-width: 950px) {
+        .navigation-wrap {
+            display: none;
+        }
+    }
+
+    @media (max-width: 950px) {
+        .mobile-navigation {
+            display: flex;
+        }
+    }
+    
+</style>
+
+
+
+<style>
+.MathJax {
+    display: block;
+    text-align: left;
+    padding: 0;
+}
+
+
+.MJXc-display {
+    display: block;
+    text-align: left;
+ 
+    padding: 0;
+}
+
+.mjx-chtml {
+    display: inline-block;
+    line-height: 0;
+    text-indent: 0;
+    text-align: left;
+    text-transform: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size:90%;
+    font-size-adjust: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    word-spacing: normal;
+    white-space: nowrap;
+    float: none;
+    direction: ltr;
+    max-width: none;
+    max-height: none;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    margin: 0;
+    padding: 1px 0;
+
+}
+
+
+
+
+.img_description_showed {
+    position:absolute;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 98%;
+    margin-top: 160px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.btn-stäng {
+    position: relative;
+    margin-top:100px; 
+    background-color: rgb(248, 4, 12);
+    font-weight: 700;
+
+    
+}
+.btn-stäng:hover {
+    background-color: #cd0d0d;
+}
+
+
+</style>
+
+
+
+
+
+
+<!-- Modal toggle -->
+
+  
+
+
+
+
+
+
+
+
+
+<!-- <div class="home-container2">
+    <button id="stäng-question-description" class="btn btn-stäng" style="display: none;">Stäng</button>
+</div>
+
+<img class="img_description_showed" id="övnings-beskrivning" style="display: none;" src=""> -->
+
+
+
+<div class="mobile-navigation">
+    <div class="scrollable-nav">
+    
+        {% for question in quiz.question.all %}
+
+        {% if link_clicked != question.id %}
+        {% if question not in completed_questions %}
+
+        <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link2">
+            <p style="margin: 0px;">Fråga {{ question.question_count }}.</p>  
+           
+        </button>
+
+        {% elif question in completed_questions %}
+        <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link2">
+            <p style="margin: 0px;">Fråga {{ question.question_count }}.</p>  
+           
+                <img src="{% static 'images/checked.png' %}" alt="Image Description" class="jump-question-wrapper-img">
+            </button>
+        
+        
+        {% endif %}
+    
+    {% elif link_clicked == question.id %}
+        {% if question not in completed_questions %}
+
+        <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link2 link-clicked" >
+            <p style="margin: 0px;">Fråga {{ question.question_count }}.</p>  
+           
+        </button>
+
+        {% elif question in completed_questions %}
+
+        <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link2 link-clicked" >
+            <p style="margin: 0px;">Fråga {{ question.question_count }}.</p>  
+           
+                <img src="{% static 'images/checked.png' %}" alt="Image Description" class="jump-question-wrapper-img">
+            </button>
+
+{% endif %}
+
+    {% endif %}
+
+    {% endfor %}
+
+
+
+
+        <!-- Add more buttons for your sections as needed -->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="home-container">
+<div>
+
+    
+
+    <div class="navigation-wrap">
+        
+        <!-- {% for quiz in alla_quiz %}
+        {% if clicked != quiz.id %}
+        <form action="{% url 'quiz-page' prov.title prov.id quiz.id %}" method="POST" style="display: inline-block; margin-right: 6px;">
+            {% csrf_token %}
+            <input type="hidden" name="form-type" value="click_quiz">
+            <input type="submit" value=" {{quiz.name.capitalize}} " class="övning-btn" style="margin-top: 10px; margin-bottom: 10px;">
+        </form>
+
+        {% elif clicked == quiz.id %}
+        <form action="{% url 'quiz-page' prov.title prov.id quiz.id %}" method="POST" style="display: inline-block; margin-right: 6px;">
+            {% csrf_token %}
+            <input type="hidden" name="form-type" value="click_quiz">
+            <input type="submit" value=" {{quiz.name.capitalize}} " class="övning-btn clicked" style="margin-top: 10px; margin-bottom: 16px;">
+        </form>
+        {% endif %}
+
+   
+        {% endfor %} -->
+
+
+        <!-- {% if question in completed_questions %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form-type" value="starta-om-prov">
+            <input type="submit" value="Börja om" class="btn">
+        </form>
+        {% endif %}  -->
+      
+
+            <!-- <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="form-type" value="starta-om-prov">
+                <input type="submit" value="Börja om" class="btn" style="margin-bottom: 20px;">
+            </form> -->
+
+            <div class="jump-question-wrapper scroll">
+            {% for question in quiz.question.all %}
+
+                {% if link_clicked != question.id %}
+                {% if question not in completed_questions %}
+ 
+                <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link" style="margin-bottom: 5px;">
+                    <p>{{ question.question_count }}. <span>{{ question.text|safe }}</span></p> 
+                   
+                </button>
+
+                {% elif question in completed_questions %}
+                <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link" style="margin-bottom: 5px;">
+                    <p>{{ question.question_count }}. <span>{{ question.text|safe }}</span></p> 
+                   
+       
+
+                        <img src="{% static 'images/checked.png' %}" alt="Image Description" class="jump-question-wrapper-img">
+                    </button>
+                
+                
+                {% endif %}
+            
+            {% elif link_clicked == question.id %}
+                {% if question not in completed_questions %}
+  
+                <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link link-clicked" style="margin-bottom: 5px;">
+                    <p>{{ question.question_count }}. <span>{{ question.text|safe }}</span></p> 
+                   
+                </button>
+
+                {% elif question in completed_questions %}
+
+                <button type="submit" id="question-link" name="jump-question-link" value="{{ question.id }}" class="question-link link-clicked" style="margin-bottom: 5px;">
+                    <p>{{ question.question_count }}. <span>{{ question.text|safe }}</span></p> 
+                   
+                        <img src="{% static 'images/checked.png' %}" alt="Image Description" class="jump-question-wrapper-img">
+                    </button>
+        
+        {% endif %}
+
+            {% endif %}
+
+            {% endfor %}
+
+            </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+<div style="width: 700px;">
+
+
+    <!-- Fråga start -->
+    <div id="question-id-div" style="display: none;">{{ question.id }}</div>
+    
+    {% if all_questions_completed == None %}
+    <p style="font-size: 25px; font-weight:bold; color:#50617c;">{{quiz.name.capitalize}}</p>
+
+    
+
+    <button id="visa-txt-description-btn" class="btn-original" style="display: none; border-radius:7px; background-color: #1dbb86; font-weight: bold;">Visa Texten</button>
+    <button id="dölj-txt-description-btn" class="btn-original" style="display: none;border-radius:7px; background-color: #e03036; font-weight: bold;">Dölj Texten</button>
+    <div id="question-description-txt" class="scroll-question-description-txt" style="display: none;">
+        <p style="font-family: 'Times New Roman', Times, serif; line-height: 1.3; color: #555;" id="txt-description-content"></p>
+    </div>
+    
+
+    <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" id="övnings-beskriving-btn" type="button" class="btn-original" style=" background-color: #e3e3e3; color: #2e2e2e; border-radius:7px; font-weight:600; display:none;">Visa ÖvningsBeskrivningen</button>
+
+      <!-- Main modal -->
+  <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Bild till frågan
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 hidden md:block">
+                    <!-- show the following on larger device or screen -->
+                    Zooma in med (mac: cmd och +) (windows: ctrl och +). Zooma ut med (mac: cmd och -) (windows: ctrl och -)
+                </p>
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 block md:hidden">
+                    <!-- show the following on mobile device -->
+                    Använd fingrarna för att zooma in och ut
+                </p>
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    <img id="övningsbeskrivning-img" src="" alt="">
+                </p>
+
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Göm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    {% if question != None %}
+            <p class="question_p" id="question-p"> {{question.question_count}}. {{question.text.capitalize}} </p> 
+             
+            {% if question.img %}
+                <img src="{% static 'question.img' %}">
+            {% endif %}
+
+            
+            
+    {% endif %} 
+        
+    <ul id="message" class="messages" style="display: none;">
+        <li class=""></li>
+    </ul>
+
+<!-- alternatives start -->
+{% if last_question == False %}
+
+        <div id="choises">
+            {% for choise in choises %}
+                <p>
+                    <!-- <input type="hidden" name="form-type" value="answer-submission"> -->
+
+                    <label class="quiz-alternative-button">
+                        <input type="radio" name="answer" value="{{choise.id}}" class="quiz-alternatives" id="quiz-alternative">
+                        <span class="alternative-text">
+                          {{choise.header}} {{choise.text}}
+    
+                        </span>
+                      </label>
+                      
+                </p>
+            {% endfor %}
+        </div>
+
+
+        <br>
+           
+            {% if question not in completed_questions %}
+            {% endif %}
+            <button value="Svara" class="btn-original" id="submit-alternative" style="border-radius:5px;">Svara</button>
+
+            {% if question in completed_questions %}
+            <button value="Svara" class="btn-original" id="submit-alternative" style="display: none; border-radius:5px;">Svara</button>
+            {% endif %}
+
+
+{% elif last_question == True %}
+
+    <!-- <form action="" method="POST">
+        {% csrf_token %}
+            {% for choise in choises %}
+                <p>
+                    <input type="hidden" name="form-type" value="answer-submission-last">
+
+                    <label class="quiz-alternative-button">
+                        <input type="radio" name="answer" value="{{choise.id}}" class="quiz-alternatives">
+                        <span class="alternative-text">
+                          {{choise.header}} {{choise.text}}
+ 
+                        </span>
+                    </label>
+                    
+                </p>
+            {% endfor %}
+
+
+
+
+            {% if question not in completed_questions %}
+                
+                    <button value="Svara" class="btn-original" id="submit-alternative">Svara</button>
+
+        {% endif %}
+    </form> -->
+
+{% endif %}
+
+
+<!-- alternatives end -->
+
+
+
+
+   
+
+    <div class="nästa-tillbaka-brevidvarann-container" style="margin-top: 6px;">
+       
+            <input type="submit" value="<" id="tillbaka-btn" class="back-forward-btn" style="display: none;">
+
+
+            <input type="submit" value=">" id="nästa-btn" class="back-forward-btn">
+
+    </div>
+
+
+
+
+
+    {% elif all_questions_completed == True %}
+    <h2>{{quiz.name}}</h2>
+    <p>Bra Jobbat! Du har svarat på alla frågor som berör {{quiz.name}}! Nu kan du fortsätta med andra övningar eller välja börja om för att göra om övningen!</p>
+    
+    <div class="nästa-tillbaka-brevidvarann-container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form-type" value="starta-om-prov">
+            <input type="submit" value="Börja om" class="btn">
+        </form>
+
+
+    
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form-type" value="nästa-del">
+            <input type="submit" value="Nästa övningsdel" class="btn">
+        </form>
+    </div>
+
+
+    <!-- submit a post request automatically to mark the quiz as completed -->
+    <form id="markComplete" action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form-type" value="mark-complete">
+
+    </form>
+    
+
+
+    {% elif all_questions_completed == False %}
+    <h2>{{quiz.name}}</h2>
+    <p>Du är ännu inte klar med alla frågor, du kan alltid gå tillbaka och göra klart dem!</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="<" id="tillbaka-btn" class="back-forward-btn" style="display: none;">
+    </form>
+
+
+    {% endif %}
+ 
+        <!-- Fråga slut -->
+        <br>
+
+    <p style="font-size: 18px; margin-top: 15px;">Visa rätt svar:</p>
+    <button id="show-svar-btn" style="background:none; border:none; ">
+        <img src="{% static 'images/show.png' %}" style="width:35px;">
+    </button>
+
+
+
+
+<br>
+    <p id="behöver-du-hjälp?" style="font-size: 18px;">Behöver du hjälp? Tryck nedan för att få en förklaring.</p>
+
+    <div class="loader" id="loader" style="display: none;"></div>
+
+    <button id="förklaring-btn" style="background:none; border:none">
+        <img src="{% static 'images/help.png' %}" style="width:55px;">
+    </button>
+
+
+    <div id="förklaring-div" style="border: 1px solid; display:none;">
+        <div style="padding-left: 10px;">
+        <p style="font-size: 30px; font-weight: bold;">Förklaring</p>
+        <p id="förklaring-text"></p>
+
+        </div>
+    </div>
+    
+    <br><br>
+
+
+
+
+
+<br>
+<br>
+<br>
+
+        
+</div>
+</div>
+
+
+<div id="scriptContainer">
+
+</div>
+
+
+ 
+
+<!-- For devices with media maximum 950px width -->
+<script>
+    if (window.innerWidth <= 950) { 
+      var scriptContainer = document.getElementById('scriptContainer');
+
+      var script1 = document.createElement('script');
+      script1.src = "{% static 'js/övningsläge/mobile/backnextnavigateMobile.js' %}";
+      scriptContainer.appendChild(script1);
+    
+      var script2 = document.createElement('script');
+      script2.src = "{% static 'js/övningsläge/mobile/submitAnswerMobile.js' %}";
+      scriptContainer.appendChild(script2);
+
+      var script3 = document.createElement('script');
+      script3.src = "{% static 'js/övningsläge/mobile/jumpquestionMobile.js' %}"; 
+      scriptContainer.appendChild(script3);
+      
+    }
+    </script>
+    
+    <!-- For devices with media at least 950px width -->
+    <script>
+    if (window.innerWidth >= 950) {
+      var scriptContainer = document.getElementById('scriptContainer');
+
+      var script4 = document.createElement('script');
+      script4.src = "{% static 'js/övningsläge/jumpquestion.js' %}";
+      scriptContainer.appendChild(script4);
+    
+      var script5 = document.createElement('script');
+      script5.src = "{% static 'js/övningsläge/submitanswer.js' %}";
+      scriptContainer.appendChild(script5);
+    
+      var script6 = document.createElement('script');
+      script6.src = "{% static 'js/övningsläge/backnextnavigate.js' %}";
+      scriptContainer.appendChild(script6);
+    }
+    </script>
+    
+  
+    <script src="{% static 'js/chatgpt.js' %}"></script>
+    <script src="{% static 'js/övningsläge/showAnswer.js' %}"></script>
+    
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
